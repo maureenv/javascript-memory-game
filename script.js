@@ -10,7 +10,7 @@ for(var i=0; i<cardArray.length; i++){
   board.appendChild(cardsBack);
 // appending letters to cards
   var letter=document.createElement("p");
-  var a=document.createTextNode("A");
+  var a=document.createTextNode(cardArray[i]);
   letter.appendChild(a);
   letter.classList.add("textstyle"); //add css styling to text
   cardsBack.appendChild(letter);
