@@ -1,3 +1,19 @@
-body{
-  background-color: blue;
+h1{
+  text-align: center;
+
+}
+
+#board{
+  background-color: gray;
+  width: 800px;
+  height: 800px;
+  margin: 0px auto;
+}
+
+.cards {
+  background-color: black;
+  width: 190px;
+  height: 190px;
+  margin: 5px;
+  float:right;
 }
