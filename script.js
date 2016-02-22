@@ -20,7 +20,7 @@ var shuffleDeck=function(){
     }
   }
 
-  shuffleDeck();
+shuffleDeck();
 
 var board=document.getElementById("board");
 
@@ -42,7 +42,5 @@ for(var i=0; i<cardArray.length; i++){
 // Change color of cards on click
 cardsBack.addEventListener("click",function(){
     this.classList.toggle("cardsFront");
-
     })
-
 } // close for loop
