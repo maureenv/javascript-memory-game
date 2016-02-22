@@ -1,6 +1,7 @@
 cardArray=["A","A","B","B","C","C","D","D","E","E","F","F","G","G","H","H"];
 
-//// SHUFFLE DECK
+
+///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
    // Using the Fisher-Yates (Knuth) shuffle
     var currentIndex = cardArray.length
@@ -19,9 +20,10 @@ var shuffleDeck=function(){
       cardArray[randomIndex] = temporaryValue;
     }
   }
+///////////////////////// End shuffle DECK
 
 shuffleDeck();
-
+console.log(cardArray);
 var board=document.getElementById("board");
 
 for(var i=0; i<cardArray.length; i++){
@@ -33,14 +35,23 @@ for(var i=0; i<cardArray.length; i++){
 
 // appending letters to cards
   var letter=document.createElement("p");
-  var a=document.createTextNode(cardArray[i]);
-  letter.appendChild(a);
+  var arrayNumber=document.createTextNode(cardArray[i]);
+  letter.appendChild(arrayNumber);
   letter.classList.add("textstyle"); //add css styling to text
   cardsBack.appendChild(letter);
 
+// data-deck-position finder
+cardsBack.setAttribute("data-deck-position", i);
 
 // Change color of cards on click
 cardsBack.addEventListener("click",function(){
     this.classList.toggle("cardsFront");
-    })
+    game(this.getAttribute("data-deck-position"));
+  })
+
 } // close for loop
+
+var game=function(x){
+  var value=document.getElementsByClassName("cardsBack");
+  console.log(value[x]);
+}
