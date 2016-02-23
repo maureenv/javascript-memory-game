@@ -1,6 +1,7 @@
 cardArray=["A","A","B","B","C","C","D","D","E","E","F","F","G","G","H","H"];
 
 
+
 ///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
    // Using the Fisher-Yates (Knuth) shuffle
@@ -50,8 +51,12 @@ cardsBack.addEventListener("click",function(){
   })
 
 } // close for loop
+var cardLetter;
 
 var game=function(x){
   var value=document.getElementsByClassName("cardsBack");
-  console.log(value[x]);
+  cardLetter = value[x].textContent; // this returns only the text on the card
+  return cardLetter;
 }
+
+console.log(cardLetter);
