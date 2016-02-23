@@ -1,6 +1,6 @@
 cardArray=["A","A","B","B","C","C","D","D","E","E","F","F","G","G","H","H"];
 
-
+clickedCard=[];
 
 ///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
@@ -48,7 +48,13 @@ cardsBack.setAttribute("data-deck-position", i);
 cardsBack.addEventListener("click",function(){
     this.classList.toggle("cardsFront");
     game(this.getAttribute("data-deck-position"));
-  })
+
+    if (clickedCard.length<2){
+      clickedCard.push(cardLetter);
+        console.log(clickedCard);
+    }
+
+})
 
 } // close for loop
 var cardLetter;
@@ -56,7 +62,4 @@ var cardLetter;
 var game=function(x){
   var value=document.getElementsByClassName("cardsBack");
   cardLetter = value[x].textContent; // this returns only the text on the card
-  return cardLetter;
 }
-
-console.log(cardLetter); // why is this undefined 
