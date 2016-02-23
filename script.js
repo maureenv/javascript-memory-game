@@ -41,22 +41,19 @@ for(var i=0; i<cardArray.length; i++){
   letter.classList.add("textstyle"); //add css styling to text
   cardsBack.appendChild(letter);
 
-// data-deck-position finder
-cardsBack.setAttribute("data-deck-position", i);
-
-// Change color of cards on click
-cardsBack.addEventListener("click",function(){
-    this.classList.toggle("cardsFront");
-    game(this.getAttribute("data-deck-position"));
+  // data-deck-position finder
+  cardsBack.setAttribute("data-deck-position", i);
 
     if (clickedCard.length<2){
-      clickedCard.push(cardLetter);
-        console.log(clickedCard);
-        compare();
+    // Change color of cards on click
+      cardsBack.addEventListener("click",function(){
+          this.classList.toggle("cardsFront");
+          game(this.getAttribute("data-deck-position"));
+            clickedCard.push(cardLetter);
+              console.log(clickedCard);
+              compare();
+      })
     }
-
-})
-
 } // close for loop
 
 ///// Get letter of the card that is clicked on
@@ -71,9 +68,11 @@ var game=function(x){
 var compare=function(){
   if (clickedCard.length===2){
     if (clickedCard[0]===clickedCard[1]){
+
       console.log("It's a match");
     } else {
-      console.log("It's not a match");
+      //console.log("It's not a match");
+      clickedCard.classList.remove("cardsFront");
     }
   }
 }
