@@ -52,14 +52,28 @@ cardsBack.addEventListener("click",function(){
     if (clickedCard.length<2){
       clickedCard.push(cardLetter);
         console.log(clickedCard);
+        compare();
     }
 
 })
 
 } // close for loop
-var cardLetter;
 
+///// Get letter of the card that is clicked on
+var cardLetter;
 var game=function(x){
-  var value=document.getElementsByClassName("cardsBack");
+  value=document.getElementsByClassName("cardsBack");
   cardLetter = value[x].textContent; // this returns only the text on the card
+}
+
+////Compare clicked cards
+
+var compare=function(){
+  if (clickedCard.length===2){
+    if (clickedCard[0]===clickedCard[1]){
+      console.log("It's a match");
+    } else {
+      console.log("It's not a match");
+    }
+  }
 }
