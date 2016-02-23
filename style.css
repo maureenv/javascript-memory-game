@@ -10,20 +10,23 @@ h1{
   margin: 0px auto;
 }
 
-.cardsBack{
-  background-color: black;
+
+.card{
   width: 190px;
   height: 190px;
   margin: 5px;
   float:right;
+  background-color: black;
   color:transparent;
 }
-
-.cardsFront {
+.card.front{
   background-color: blue;
-  color: white;
-
+  color:white;
 }
+
+
+/* <div class="cards">Black</div>  */
+/* <div class="cards front">Blue</div>  */
 
 .textstyle {
   text-align: center;
