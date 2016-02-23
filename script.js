@@ -59,4 +59,4 @@ var game=function(x){
   return cardLetter;
 }
 
-console.log(cardLetter);
+console.log(cardLetter); // why is this undefined 
