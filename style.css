@@ -35,7 +35,8 @@ h1{
   height: 160px;
   margin: 10px;
   float:right;
-  background-color: gray;
+  background-image: url("images/back.jpg");
+  background-size: 160px 160px;
   color:transparent;
   border-radius: 10px;
   -moz-box-shadow: -3px 3px 10px #000;
@@ -43,11 +44,13 @@ h1{
    box-shadow: -3px 3px 10px #000;
 }
 .card.front{
+  background-image: none;
   background-color: white;
   color:gray;
 }
 
 .card.match{
+  background-image: none;
   background-color: white;
   color:gray;
 }
