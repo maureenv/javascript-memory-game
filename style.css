@@ -1,36 +1,66 @@
+body{
+  background-image: url("images/wood.jpg");no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 h1{
   text-align: center;
+  font-size: 4em;
+  color: white;
+  /*font-family: 'Amatic SC', cursive;*/
+  font-family: 'Bevan', cursive;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-shadow: -2px 3px #000;
 
 }
 
 #board{
-  background-color: gray;
-  width: 800px;
-  height: 800px;
+  background-color: transparent;
+  width: 720px;
+  height: 530px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   margin: 0px auto;
 }
 
 
 .card{
-  width: 190px;
-  height: 190px;
-  margin: 5px;
+  width: 160px;
+  height: 160px;
+  margin: 10px;
   float:right;
-  background-color: black;
+  background-color: gray;
   color:transparent;
+  border-radius: 10px;
+  -moz-box-shadow: -3px 3px 10px #000;
+  -webkit-box-shadow: -3px 3px 10px #000;
+   box-shadow: -3px 3px 10px #000;
 }
 .card.front{
-  background-color: blue;
-  color:white;
+  background-color: white;
+  color:gray;
 }
 
+.card.match{
+  background-color: white;
+  color:gray;
+}
 
 /* <div class="cards">Black</div>  */
 /* <div class="cards front">Blue</div>  */
 
 .textstyle {
   text-align: center;
-  line-height: 95px;
-  font-size: 50px;
+  padding-bottom: 100px;
+  line-height: 10px;
+  font-size: 80px;
+  font-family: 'Bevan', cursive;
+  /*font-family: 'Amatic SC', cursive;*/
 
 }

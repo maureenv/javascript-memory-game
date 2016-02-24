@@ -1,6 +1,8 @@
-cardArray=["A","A","B","B","C","C","D","D","E","E","F","F","G","G","H","H"];
+cardArray=["A","A","B","B","C","C","D","D","E","E","F","F"];
 
 clickedCard=[];
+
+matchedCard=[];
 
 ///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
@@ -21,7 +23,7 @@ var shuffleDeck=function(){
     cardArray[randomIndex] = temporaryValue;
   }
 }
-///////////////////////// End shuffle DECK
+///////////////////////////////////////// End shuffle DECK
 
 shuffleDeck();
 console.log(cardArray);
@@ -41,26 +43,33 @@ for(var i=0; i<cardArray.length; i++){
   letter.classList.add("textstyle"); //add css styling to text
   cardsBack.appendChild(letter);
 
-  // data-deck-position finder
-  cardsBack.setAttribute("data-deck-position", i);
-
-    // Change color of cards on click
+  // Change color of cards on click
   cardsBack.addEventListener("click",function(){
     var card = this;
     if (clickedCard.length < 2){
       card.classList.add("front");
-      // var cardLetter = game(this.getAttribute("data-deck-position"));
+      card.classList.add("match");
       clickedCard.push(card.textContent);
-  
+      matchedCard.push(card);
+      console.log(matchedCard);
+
+      //// compares cards that are clicked on
       if (clickedCard.length === 2){
         if (clickedCard[0] === clickedCard[1]){
           console.log("It's a match!");
+            clickedCard=[];
+            matchedCard=[];
         } else {
           console.log("It's not a match!")
           setTimeout(turnOffAllCards, 1000);
+          for (i=0; i<matchedCard.length; i++){
+            matchedCard[i].classList.remove("match");
+          }
+          matchedCard=[];
+           // calls turnOffAllCards
         }
-      }
-    }
+      } // close if statement
+    } // close second if statement
   })
 } // close for loop
 
@@ -68,6 +77,14 @@ function turnOffAllCards(){
   var frontCards = document.querySelectorAll(".front");
   for(var i = 0; i < frontCards.length; i++){
     frontCards[i].classList.remove("front");
+    clickedCard=[];
 
   }
+
+
+  /*function turnOffAllCards(){
+    for(var i = 0; i < clickedCard.length; i++){
+      clickedCard[i].classList.remove("front");
+      */
+
 }
