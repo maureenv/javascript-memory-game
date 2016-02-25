@@ -18,6 +18,8 @@ clickedCard=[];
 
 matchedCard=[];
 
+clicks=30;
+
 ///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
   // Using the Fisher-Yates (Knuth) shuffle
@@ -59,10 +61,14 @@ for(var i=0; i<cardArray.length; i++){
 
   // Change color of cards on click
   cardsBack.addEventListener("click",function(){
+  if (clicks>0){
+    clicks--;
+    console.log(clicks);
+    document.getElementsByClassName('counter').innerHTML='HELLO';
     var card = this;
     if (clickedCard.length < 2){
      card.classList.add("image");
-      card.classList.add("match");
+      card.classList.add("match"); // add class of match to all cards
       clickedCard.push(card.innerHTML);
       matchedCard.push(card);
       console.log("this is card" + card);
@@ -86,7 +92,8 @@ for(var i=0; i<cardArray.length; i++){
         }
       } // close if statement
     } // close second if statement
-  })
+    } // close click if statement
+  }) // event listener
 } // close for loop
 
 function turnOffAllCards(){
