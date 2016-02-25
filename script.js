@@ -1,4 +1,18 @@
-cardArray=["A","A","B","B","C","C","D","D","E","E","F","F"];
+cardArray=[
+    {text: "A", image: "images/1.png"},
+    {text: "A", image: "images/1.png"},
+    {text: "B", image: "images/2.jpg"},
+    {text: "B", image: "images/2.jpg"},
+    {text: "C", image: "images/3.jpg"},
+    {text: "C", image: "images/3.jpg"},
+    {text: "D", image: "images/4.jpg"},
+    {text: "D", image: "images/4.jpg"},
+    {text: "E", image: "images/5.jpg"},
+    {text: "E", image: "images/5.jpg"},
+    {text: "F", image: "images/6.jpg"},
+    {text: "F", image: "images/6.jpg"}
+
+];
 
 clickedCard=[];
 
@@ -24,9 +38,8 @@ var shuffleDeck=function(){
   }
 }
 ///////////////////////////////////////// End shuffle DECK
-
-shuffleDeck();
-console.log(cardArray);
+  shuffleDeck();
+  console.log(cardArray);
 var board=document.getElementById("board");
 
 for(var i=0; i<cardArray.length; i++){
@@ -36,26 +49,29 @@ for(var i=0; i<cardArray.length; i++){
   cardsBack.classList.add("card");
   board.appendChild(cardsBack);
 
-  // appending letters to cards
-  var letter=document.createElement("p");
-  var arrayNumber=document.createTextNode(cardArray[i]);
-  letter.appendChild(arrayNumber);
-  letter.classList.add("textstyle"); //add css styling to text
-  cardsBack.appendChild(letter);
+  // adding images to cardback
+  var images=document.createElement("img");
+  images.src = cardArray[i].image;
+  images.className="image";
+  cardsBack.appendChild(images);
+
+
 
   // Change color of cards on click
   cardsBack.addEventListener("click",function(){
     var card = this;
     if (clickedCard.length < 2){
-      card.classList.add("front");
+     card.classList.add("image");
       card.classList.add("match");
-      clickedCard.push(card.textContent);
+      clickedCard.push(card.innerHTML);
       matchedCard.push(card);
-      console.log(matchedCard);
+      console.log("this is card" + card);
 
+  console.log("this is clickedCard" + clickedCard);
       //// compares cards that are clicked on
       if (clickedCard.length === 2){
         if (clickedCard[0] === clickedCard[1]){
+
           console.log("It's a match!");
             clickedCard=[];
             matchedCard=[];
@@ -74,17 +90,11 @@ for(var i=0; i<cardArray.length; i++){
 } // close for loop
 
 function turnOffAllCards(){
-  var frontCards = document.querySelectorAll(".front");
+  var frontCards = document.querySelectorAll("div.image:not(.match)");
   for(var i = 0; i < frontCards.length; i++){
-    frontCards[i].classList.remove("front");
+    frontCards[i].classList.remove("image");
     clickedCard=[];
 
   }
-
-
-  /*function turnOffAllCards(){
-    for(var i = 0; i < clickedCard.length; i++){
-      clickedCard[i].classList.remove("front");
-      */
 
 }
