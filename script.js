@@ -18,7 +18,7 @@ clickedCard=[];
 
 matchedCard=[];
 
-clicks=30;
+clicks=20;
 
 ///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
@@ -64,7 +64,7 @@ for(var i=0; i<cardArray.length; i++){
   if (clicks>0){
     clicks--;
     console.log(clicks);
-    document.getElementsByClassName('counter').innerHTML='HELLO';
+    document.getElementById('counter').innerHTML=clicks.toString();
     var card = this;
     if (clickedCard.length < 2){
      card.classList.add("image");
