@@ -15,10 +15,11 @@ cardArray=[
 ];
 
 clickedCard=[];
-
 matchedCard=[];
+correctCard=[];
 
-clicks=20;
+clicks=18;
+
 
 ///////////////////////////////////////// SHUFFLE DECK
 var shuffleDeck=function(){
@@ -40,8 +41,9 @@ var shuffleDeck=function(){
   }
 }
 ///////////////////////////////////////// End shuffle DECK
-  shuffleDeck();
-  console.log(cardArray);
+
+shuffleDeck();
+
 var board=document.getElementById("board");
 
 for(var i=0; i<cardArray.length; i++){
@@ -58,43 +60,59 @@ for(var i=0; i<cardArray.length; i++){
   cardsBack.appendChild(images);
 
 
-
   // Change color of cards on click
   cardsBack.addEventListener("click",function(){
+
   if (clicks>0){
     clicks--;
-    console.log(clicks);
-    document.getElementById('counter').innerHTML=clicks.toString();
+    document.getElementById('counter').innerHTML="Number of clicks left " + clicks.toString();
+
     var card = this;
     if (clickedCard.length < 2){
      card.classList.add("image");
       card.classList.add("match"); // add class of match to all cards
       clickedCard.push(card.innerHTML);
       matchedCard.push(card);
-      console.log("this is card" + card);
-
-  console.log("this is clickedCard" + clickedCard);
       //// compares cards that are clicked on
       if (clickedCard.length === 2){
         if (clickedCard[0] === clickedCard[1]){
-
-          console.log("It's a match!");
             clickedCard=[];
             matchedCard=[];
+            correctCard.push(card);
+            if (correctCard.length === 6){  // the you WIN if statement
+              console.log("You win");
+              clicks=0;
+              document.getElementById('counter').innerHTML="YOU WIN!";
+            }
         } else {
-          console.log("It's not a match!")
+          console.log("This is correctCard Length" + correctCard.length);
+          console.log(" Number of clicks" + clicks);
+          if (correctCard.length<6 && clicks<=1) {  //the you LOSE if statement
+            document.getElementById('counter').innerHTML="YOU LOSE!";
+            clicks = 0;
+            console.log("You lose");
+          }
           setTimeout(turnOffAllCards, 1000);
           for (i=0; i<matchedCard.length; i++){
             matchedCard[i].classList.remove("match");
+
           }
+
           matchedCard=[];
            // calls turnOffAllCards
+
         }
       } // close if statement
     } // close second if statement
     } // close click if statement
+     // all cards that don't match
+    //if (clicks==0 && noMatch>0){
+      //document.getElementById('counter').innerHTML="YOU LOSE";
+    //}
+
   }) // event listener
 } // close for loop
+
 
 function turnOffAllCards(){
   var frontCards = document.querySelectorAll("div.image:not(.match)");
